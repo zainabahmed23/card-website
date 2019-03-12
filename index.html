@@ -1,31 +1,59 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://use.typekit.net/egr8wbl.css">
+        <link rel="stylesheet" href="https://use.typekit.net/egr8wbl.css">
         <title>
             printyourcard
         </title>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            const buildSlideMarkup = (count) => {
+            let slideMarkup = '';
+            for (var i = 1; i <= count; i++) {
+                slideMarkup += '<slide><span class="label">' + i + '</span></slide>'
+            }
+            return slideMarkup;
+            };
 
+            new Vue({
+                el: '#carousel',
+            components: {
+                'carousel': VueCarousel.Carousel,
+                'slide': VueCarousel.Slide
+            },
+            template: '<div><carousel :autoplay="true">' + buildSlideMarkup(10) + '</carousel></div>'
+            });
+        </script>
         <style>
             body{
                 background-color:ghostwhite;
             }
             .marker{
                 font-family: goodlife-sans-condensed, sans-serif;
-                font-weight: 400;
+                font-weight: 200;
                 font-style: normal;
-                font-size: 6em;
+                font-size: 3em;
                 margin:0%;
                 text-align: center;
+            }
+            .text{
+                font-family: base-mono-narrow, monospace;
+                font-weight: 50;
+                font-style: normal;
+                font-size: 1.3em;
+                margin:0%;
+                text-align: center;
+                        
             }
 
             .links {
                 font-family: goodlife-sans-condensed, sans-serif;
-                font-weight: 400;
+                font-weight: 200;
                 font-style: normal;
-                font-size: 2.5em;
-                padding-top: 50px;
+                font-size: 2em;
+                padding-top: 30px;
                 padding-left: 5%;
-                padding-right: 5%;
+                padding-right: 80%;
                 display: flex;
                 justify-content: space-between;
             }
@@ -67,13 +95,29 @@
                 color:grey;
                 text-decoration: none;
             }
+
+            .VueCarousel-slide {
+                position: relative;
+                background: #42b983;
+                color: #fff;
+                font-family: Arial;
+                font-size: 24px;
+                text-align: center;
+                min-height: 100px;
+            }
+
+            .label {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
         </style>
     </head>
     <body>
         <div class="links">
-            <a href="about.html">about</a>
             <div class="dropdown">
-                <a class="dropbtn" href="occasion.html">occasion </a>
+                <a class="dropbtn" href="#">shop</a>
                 <div class="dropdown-content">
                     <a href="wedding.html">Wedding</a>
                     <a href="graduation.html">Graduation</a>
@@ -82,14 +126,15 @@
             </div>
             <a href="custom.html">custom</a>
         </div>
+
               
         <p class="marker" style="margin-top:150px;">
-            print your   
+            print your card.
         </p>
-        <p class="marker" >
-            card
-
+        <p class="text" >
+            Welcome 👋 Print question-based cards for almost any occasion!  
         </p>
-
+        <div id="carousel">
+        </div>
     </body>
 </html>
